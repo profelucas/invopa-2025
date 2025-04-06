@@ -1,0 +1,5 @@
+[user]
+	name = profelucas
+	email = lucas.almonacid@ulagos.cl
+[credential]
+	helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-core.exe
