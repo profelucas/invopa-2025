@@ -1,21 +1,26 @@
 import pulp as pl
-
+#creacion de objeto
 ejemplo = pl.LpProblem("ejemplo",pl.LpMaximize)
 
-x = pl.LpVariable('x', lowBound=0, cat='Continuous')
-y = pl.LpVariable('y', lowBound=2, cat='Continuous')
+#variables
+x1 = pl.LpVariable('x1', lowBound=0, cat='Continuous')
+x2 = pl.LpVariable('x2', lowBound=0, cat='Continuous')
 
-ejemplo+= 4 * x + 3 * y, "Z"
+#funcion objetivo
+ejemplo+= 4 * x1 +  x2, "Z"
 
-ejemplo +=2 * y <= 25 - x,"r1"
-ejemplo += 4 * y >= 2 * x - 8,"r2"
-ejemplo += y <= 2 * x - 5,"r3"
+#restricciones
+ejemplo += x2 <= 3 + x1,"r1"
+ejemplo += 6*x2 >= 6 +x1,"r2"
+ejemplo += 3*x2 <= 25 - 5*x1 ,"r3"
+ejemplo += x2>= 4 -2*x1,"r4"
 
+#solver
 ejemplo.writeLP("ejemplo.lp")
 ejemplo.solve()
 print("estado: ", pl.LpStatus[ejemplo.status])
 for variable in ejemplo.variables():
     print ('{}={}'.format(variable.name, variable.varValue))
 
-
+#resultado
 print(pl.value(ejemplo.objective))
