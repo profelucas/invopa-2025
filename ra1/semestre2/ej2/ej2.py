@@ -18,10 +18,10 @@ ej2+=3*x1+7*x2>=21,"r3"
 #ej2+=x2>=5,"ri1.2"
 
 ej2+=x1>=4,"rd1"
-ej2+=x2<=4,"rd1.1"
+#ej2+=x2<=4,"rd1.1"
 #ej2+=x1<=4,"rd1.1.1"
-ej2+=x1>=5,"rd1.1.2"
-#ej2+=x2>=5,"rd1.2"
+#ej2+=x1>=5,"rd1.1.2"
+ej2+=x2>=5,"rd1.2"
 
 ej2.solve()
 print("estado= ", pl.LpStatus[ej2.status])
